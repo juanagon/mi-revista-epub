@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Visor EPUB</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/epub.js/0.3.88/epub.min.js"></script>
+    <style>
+        #viewer {
+            width: 100%;
+            height: 90vh;
+            border: 1px solid #ccc;
+        }
+        button {
+            padding: 10px;
+            margin: 5px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <h2>Mi Revista Digital</h2>
+    <div id="viewer"></div>
+    <br>
+    <button onclick="prevPage()">⬅ Anterior</button>
+    <button onclick="nextPage()">Siguiente ➡</button>
+
+    <script>
+        // Enlace de tu EPUB en Google Drive
+        var epubURL = https://drive.google.com/uc?export=download&id=1RT8Q5zDmZyFUGD07IP2y9HmmTDw0BX7;
+
+        var book = ePub(epubURL);
+        var rendition = book.renderTo("viewer", {
+            width: "100%",
+            height: "100%"
+        });
+        rendition.display();
+
+        function nextPage() {
+            rendition.next();
+        }
+
+        function prevPage() {
+            rendition.prev();
+        }
+    </script>
+</body>
+</html>
